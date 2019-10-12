@@ -34,8 +34,8 @@ class Dataset:
         self.test_size = len(self.test_label)
         self.crop_size = 224
         self.scale_size = 256
-        self.mean = np.array([95.388, 112.346, 148.5382])   # alexnet: ([104., 117., 124.]) in bgr order; vggmean: [129.1863,104.7624,93.5940] in rgb order;
-        self.n_classes = 10575                              #
+        self.mean = np.array([95.388, 112.346, 148.5382])   # alexnet: ([104., 117., 124.]) in bgr order; 
+        self.n_classes = 10575                             
     
     def next_batch(self, batch_size, phase):
         # Get next batch of image (path) and labels
@@ -81,23 +81,8 @@ class Dataset:
                 shift = (self.scale_size - self.crop_size) // 2
                 images[i] = img[shift: shift + self.crop_size, shift: shift + self.crop_size, :]
 
-            #img = cv2.resize(img, (self.scale_size, self.scale_size))
-            #shift = (self.scale_size - self.crop_size) // 2
-            #img_crop = img[shift: shift + self.crop_size, shift: shift + self.crop_size, :]
-            #images[i] = img  # img_crop
-
         # Expand labels
         one_hot_labels = np.zeros((batch_size, self.n_classes))
         for i, label in enumerate(labels):
             one_hot_labels[i][label] = 1
         return images, one_hot_labels
-        # Generate Lable distribution
-        # one_hot_labels = np.zeros((batch_size, self.n_classes))
-        # one_hot_labels_ori = np.zeros((batch_size, self.n_classes))
-        # lis = np.arange(0, self.n_classes, 1)  #(18, 48, 1)  [10,...,80] SAME AS self.range, totally 71 labels   #
-        # sigma = 2  # unknown
-        # for i, label in enumerate(labels):  # column: self.range ; row: batch_size
-        #     one_hot_labels_ori[i] = np.exp(-((lis-label)**2)/(2*sigma**2)) * (2*pi*sigma**2)**(-0.5)
-        #     one_hot_labels[i] = one_hot_labels_ori[i]/sum(one_hot_labels_ori[i])
-
-        # return images, one_hot_labels
