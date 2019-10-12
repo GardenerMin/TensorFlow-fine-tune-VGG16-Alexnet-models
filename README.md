@@ -46,3 +46,7 @@ To select which layer to be fine-tuned, modify 'model.py' with trainable=True/Fa
 ```
 python3 finetune.py train.txt test.txt vgg16.npy
 ```
+### Visualize the training/fine-tuning process
+```
+tensorboard --logdir path/to/log/file
+```
