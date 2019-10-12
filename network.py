@@ -79,18 +79,6 @@ def concat(inputs, axis, name):
     return tf.concat(inputs, axis, name=name)
 
 
-# def fc(input, num_out, name, relu=True):
-#     shape_w = input.get_shape()[1:]
-#     shape = input.get_shape().as_list()
-#     dim = 1
-#     for d in shape[1:]:
-#         dim *=d
-#     reshape_input = tf.reshape(input, [-1, dim])
-#     weights = make_var('weights', shape=[shape_w, num_out])
-#     biases = make_var('biases', [num_out])
-#     fc = tf.nn.bias_add(tf.matmul(reshape_input, weights), biases)
-#     return fc
-
 def fc1(input, num_out, name, relu=True, trainable=True):
     with tf.variable_scope(name) as scope:
         shape = input.get_shape().as_list()
