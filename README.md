@@ -1,5 +1,5 @@
 # TensorFlow-fine-tune-VGG16-Alexnet-models
-In this project, we demonstrate the finetune process in TensorFlow.
+In this project, finetune process is clearly demonstrated with TensorFlow. 
 ### Download the pre-trained models
 alexnet.npy and vgg16.npy.
 
@@ -37,7 +37,7 @@ Training parameters in 'finetune.py'
     n_classes = 10575
     keep_rate = 0.5  
    ```
-To select weights to be restored from the pre-trained model, modify Line 97 in 'finetune.py'
+To select weights to be restored from the pre-trained model, modify Line 90 in 'finetune.py'
    ```
    load_with_skip(weight_file, sess, ['fc8'])  # Skip weights from fc8
    ```
