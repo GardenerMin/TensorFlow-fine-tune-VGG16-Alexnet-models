@@ -11,7 +11,7 @@ import tensorflow.contrib.slim as slim
 
 def main():
     if len(sys.argv) != 4:
-        print('Usage: python finetune.py train_file test_file weight_file')
+        print('Usage: python3 finetune.py train_file test_file weight_file')
         return
 
     train_file = sys.argv[1]
@@ -19,10 +19,10 @@ def main():
     weight_file = sys.argv[3]
 
     # checkpoint save path   
-    checkpoint_path = '/media/guo/SSD/Min/tf_fine_tuning/vgg/saved_models/model_2/vggface16_1_2.ckpt'
+    checkpoint_path = '/path/to/saved/model/vggface16_finetuned.ckpt'
     # writer path        
-    train_writer_path = '/media/guo/SSD/Min/tf_fine_tuning/vggface/logs/2/train'
-    test_writer_path = '/media/guo/SSD/Min/tf_fine_tuning/vggface/logs/2/test'
+    train_writer_path = '/path/to/logs/train'
+    test_writer_path = '/path/to/logs//test'
 
     # Learning params    
     learning_rate_init = 0.001   # 0.001
@@ -41,7 +41,7 @@ def main():
     keep_rate = 0.5  # 1.0
 
     # Graph input
-    x = tf.placeholder(tf.float32, [batch_size, 224, 224, 3])    # 256 and random crop
+    x = tf.placeholder(tf.float32, [batch_size, 224, 224, 3])    #input of vgg is 224*224, input of alexnet is 227*227
     y = tf.placeholder(tf.float32, [None, n_classes])
     keep_var = tf.placeholder(tf.float32)
 
