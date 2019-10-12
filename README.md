@@ -3,7 +3,7 @@ In this project, finetune process is clearly demonstrated with TensorFlow.
 ### Download the pre-trained models
 alexnet.npy and vgg16.npy.
 
-Download link: 
+Download link: https://drive.google.com/drive/folders/1nDvd3HwPIRlPTn8UJBT7jLNuiwPnisWi?usp=sharing
 ### Generate image list for training and testing
 Generate image list (.txt) from a folder, with format 'path/to/img/ label', each sub-folder contains all images belong to one subject. The name of the sub-foler is the label, start from 0 to N.
 ```
